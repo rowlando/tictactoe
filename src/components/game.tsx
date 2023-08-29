@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Board from './board';
 import calculateWinner from '../helpers/calculateWinner';
 import calculateNextValue from '../helpers/calculateNextValue';
 
-const Game: React.FC = () => {
+const Game = () => {
     const [history, setHistory] = useState([Array(9).fill(null)]);
     const [stepNumber, setStepNumber] = useState(0);
 
