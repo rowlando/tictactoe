@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Board from './board';
 import calculateWinner from '../helpers/calculateWinner';
+import calculateNextValue from '../helpers/calculateNextValue';
 
 const Game: React.FC = () => {
     const [history, setHistory] = useState([Array(9).fill(null)]);
     const [stepNumber, setStepNumber] = useState(0);
-    const [xIsNext, setXIsNext] = useState(true);
 
     const current = history[stepNumber];
     const winner = calculateWinner(current);
@@ -18,15 +18,13 @@ const Game: React.FC = () => {
             return;
         }
 
-        squares[i] = xIsNext ? 'X' : 'O';
+        squares[i] = calculateNextValue(squares);
         setHistory([...newHistory, squares]);
         setStepNumber(newHistory.length);
-        setXIsNext(!xIsNext);
     };
 
     const jumpTo = (step: number) => {
         setStepNumber(step);
-        setXIsNext(step % 2 === 0);
     };
 
     const moves = history.map((_step, move) => {
@@ -44,7 +42,7 @@ const Game: React.FC = () => {
     } else if (stepNumber === 9) {
         status = 'Draw';
     } else {
-        status = `Next player: ${ xIsNext ? 'X' : 'O' }`;
+        status = `Next player: ${ calculateNextValue(history[stepNumber]) }`;
     }
 
     return (
