@@ -1,3 +1,8 @@
+body {
+  margin: 100px 0;
+  background-color: lightcyan;
+}
+
 .square {
   background: lightblue;
   border: 2px solid darkblue;
