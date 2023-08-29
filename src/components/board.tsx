@@ -1,6 +1,11 @@
-interface SquareProps {
+type SquareProps = {
   value: string;
   onClick: () => void;
+}
+
+type BoardProps = {
+  squares: string[];
+  onClick: (i: number) => void;
 }
 
 const Square: React.FC<SquareProps> = ({ value, onClick }) => (
@@ -8,11 +13,6 @@ const Square: React.FC<SquareProps> = ({ value, onClick }) => (
     {value}
   </button>
 );
-
-interface BoardProps {
-  squares: string[];
-  onClick: (i: number) => void;
-}
 
 const Board: React.FC<BoardProps> = ({ squares, onClick }) => {
   const renderSquare = (i: number) => <Square key={i} value={squares[i]} onClick={() => onClick(i)} />;
