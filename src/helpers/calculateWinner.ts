@@ -1,4 +1,6 @@
-const calculateWinner = (squares: string[]) => {
+import { Squares } from './calculateNextValue';
+
+const calculateWinner = (squares: Squares) => {
     const lines = [
         [0, 1, 2],
         [3, 4, 5],
