@@ -1,5 +1,5 @@
 type Player = "X" | "O";
-type Squares = Array<Player | null>;
+export type Squares = Array<Player | null>;
 
 export default function calculateNextValue(squares: Squares): Player {
     const xSquaresCount = squares.filter((r) => r === "X").length;
