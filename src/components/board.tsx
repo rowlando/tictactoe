@@ -8,13 +8,13 @@ type BoardProps = {
   onClick: (i: number) => void;
 }
 
-const Square: React.FC<SquareProps> = ({ value, onClick }) => (
+const Square = ({ value, onClick } : SquareProps) => (
   <button className="square" onClick={onClick}>
     {value}
   </button>
 );
 
-const Board: React.FC<BoardProps> = ({ squares, onClick }) => {
+const Board = ({ squares, onClick } : BoardProps) => {
   const renderSquare = (i: number) => <Square key={i} value={squares[i]} onClick={() => onClick(i)} />;
 
   return (
