@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import Board from './board';
-import calculateWinner from '../helpers/calculateWinner';
-import calculateNextValue from '../helpers/calculateNextValue';
+import { calculateWinner, calculateNextValue, gameStatus } from '../helpers';
 
 const Game = () => {
     const [history, setHistory] = useState([Array(9).fill(null)]);
     const [stepNumber, setStepNumber] = useState(0);
-
     const current = history[stepNumber];
     const winner = calculateWinner(current);
 
@@ -36,22 +34,13 @@ const Game = () => {
         );
     });
 
-    let status;
-    if (winner) {
-        status = `Winner: ${ winner }`;
-    } else if (stepNumber === 9) {
-        status = 'Draw';
-    } else {
-        status = `Next player: ${ calculateNextValue(history[stepNumber]) }`;
-    }
-
     return (
         <div className="game">
             <div>
                 <Board squares={current} onClick={handleClick} />
             </div>
             <div className="game-info">
-                <div>{status}</div>
+                <div>{gameStatus(stepNumber, history)}</div>
                 <ol>{moves}</ol>
             </div>
         </div>
