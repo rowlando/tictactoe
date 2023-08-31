@@ -7,6 +7,8 @@ export default defineConfig({
   plugins: [react()],
   base: "/tictactoe/",
   test: {
-
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './test/setup.ts'
   }
 })
