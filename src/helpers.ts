@@ -1,4 +1,4 @@
-type Player = "X" | "O";
+export type Player = "X" | "O" | null;
 export type Squares = Array<Player | null>;
 
 export function calculateNextValue(squares: Squares): Player {
@@ -25,19 +25,4 @@ export function calculateWinner(squares: Squares) {
         }
     }
     return null;
-}
-
-export function gameStatus(stepNumber: number, history: Squares[]) {
-    let status;
-    const current: Squares = history[stepNumber]
-    const winner = calculateWinner(current);
-    const unplayedSquares = current.filter((r) => Object.is(r, null)).length;
-    if (winner) {
-        status = `Winner: ${ winner }`;
-    } else if (unplayedSquares === 0) {
-        status = 'Draw';
-    } else {
-        status = `Next player: ${ calculateNextValue(history[stepNumber]) }`;
-    }
-    return status;
 }

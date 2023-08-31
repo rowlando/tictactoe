@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import Board from './board';
-import { calculateWinner, calculateNextValue, gameStatus } from '../helpers';
+import HistoryNavigation from './historyNavigation';
+import GameStatus from './gameStatus';
+import { calculateWinner, calculateNextValue, Squares } from '../helpers';
 
 const Game = () => {
-    const [history, setHistory] = useState([Array(9).fill(null)]);
+    const [history, setHistory] = useState<Squares[]>([Array(9).fill(null)]);
     const [stepNumber, setStepNumber] = useState(0);
     const current = history[stepNumber];
     const winner = calculateWinner(current);
@@ -25,23 +27,14 @@ const Game = () => {
         setStepNumber(step);
     };
 
-    const moves = history.map((_step, move) => {
-        const desc = move ? `Go to move #${ move }`: 'Go to game start';
-        return (
-            <li key={move}>
-                <button onClick={() => jumpTo(move)}>{desc}</button>
-            </li>
-        );
-    });
-
     return (
         <div className="game">
             <div>
                 <Board squares={current} onClick={handleClick} />
             </div>
             <div className="game-info">
-                <div>{gameStatus(stepNumber, history)}</div>
-                <ol>{moves}</ol>
+                <GameStatus stepNumber={stepNumber} history={history} />
+                <HistoryNavigation history={history} onClick={jumpTo}/>
             </div>
         </div>
     );
