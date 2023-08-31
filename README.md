@@ -32,7 +32,7 @@ graph TD
   A[Work on a branch] --> B[Push to GitHub]
   B --> C[Create a pull request]
   C --> D[Iterate until done]
-  D -.-> C
+  D -.-> D
   D --> E[Merge to main branch]
 ```
 
