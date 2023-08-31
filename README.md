@@ -32,8 +32,8 @@ graph TD
   A[Work on a branch] --> B[Push to GitHub]
   B --> C[Create a pull request]
   C --> D[Iterate until done]
+  D -.-> C
   D --> E[Merge to main branch]
-
 ```
 
 GitHub Actions will run `npm run test` on pull request creation and subsequent commits to the branch. The branch cannot be merged until tests pass.
