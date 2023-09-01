@@ -12,6 +12,10 @@ body {
   outline: none;
 }
 
+.square:focus, .square:hover {
+  background: lightgray;
+}
+
 .board {
   border: 4px solid darkblue;
   border-radius: 10px;
@@ -20,4 +24,13 @@ body {
   margin: 0 auto;
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.hidden {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
 }
