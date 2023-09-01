@@ -29,13 +29,9 @@ const Game = () => {
 
     return (
         <div className="game">
-            <div>
-                <Board squares={current} onClick={handleClick} />
-            </div>
-            <div className="game-info">
-                <GameStatus stepNumber={stepNumber} history={history} />
-                <HistoryNavigation history={history} onClick={jumpTo}/>
-            </div>
+            <Board squares={current} onClick={handleClick} />
+            <GameStatus stepNumber={stepNumber} history={history} />
+            <HistoryNavigation history={history} onClick={jumpTo} />
         </div>
     );
 };
